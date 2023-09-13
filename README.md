@@ -54,7 +54,7 @@ Success! Project initialization completed.
 ```
 
 ### Step 5: Important step for daisyui
-This will overwrite the daisyui configuration. Ensure that your tailwind.config.js file contains the following:
+shadcn-ui will overwrite the daisyui configuration. Ensure that your tailwind.config.js file contains the following:
 
 ```
 module.exports = {
