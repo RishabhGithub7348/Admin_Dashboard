@@ -67,7 +67,7 @@ module.exports = {
 
 ```
 
-### Step 5: Set up the database schema
+### Step 6: Set up the database schema
 Run the following command to create new migrations and connect your PostgreSQL database to your app
 
 ```
@@ -75,7 +75,7 @@ npx prisma migrate dev --name user_schema
 
 ```
 
-### Step 6: Start the development server
+### Step 7: Start the development server
 Start the development server with the following command:
 
 ```
