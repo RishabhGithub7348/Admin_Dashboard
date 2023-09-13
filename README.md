@@ -1,34 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Simple Admin Page README
+
+This project provides a simple admin page to manage users from your local PostgreSQL database. Follow the instructions below to set up and run the project:
 
 ## Getting Started
 
-First, run the development server:
+### Step 1: Set up environment variables
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+Create a `.env` file in the root directory of your project and add the following environment variables:
+
+```env
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="mystrongsecret"
+DATABASE_URL="postgresql://postgres:<Your Password>@localhost:5432/admin?schema=public"
+```
+### Step 2: Delete the migrations folder
+Navigate to the prisma folder and delete the migrations folder.
+
+### Step 3: Install dependencies
+Open a terminal and run the following commands:
+
+```
+npm install
+```
+### Step 4: Initialize shadcn-ui
+Run the following command to initialize shadcn-ui:
+
+```
+npx shadcn-ui@latest init
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### This will overwrite the daisyui configuration. Ensure that your tailwind.config.js file contains the following:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+module.exports = {
+  // ...
+  plugins: [
+    require("tailwindcss-animate"),
+    require("daisyui")
+  ],
+};
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
 
-## Learn More
+### Step 5: Set up the database schema
+Run the following command to create new migrations and connect your PostgreSQL database to your app
 
-To learn more about Next.js, take a look at the following resources:
+```
+npx prisma migrate dev --name user_schema
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Step 6: Start the development server
+Start the development server with the following command:
 
-## Deploy on Vercel
+```
+npm run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Using the App
+Create a new user by navigating to the app and signing up.
+1. Sign in with the new user credentials.
+2. You will be redirected to the admin dashboard where you can create, edit, and delete users.
+3. Note that the login user's data will not be shown on the admin dashboard.
+Enjoy using the app! If you've configured the tailwind.config.js correctly with dasyui, the UI will render perfectly.
