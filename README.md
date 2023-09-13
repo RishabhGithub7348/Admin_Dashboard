@@ -53,7 +53,8 @@ Success! Project initialization completed.
 
 ```
 
-#### This will overwrite the daisyui configuration. Ensure that your tailwind.config.js file contains the following:
+### Step 5: Important step for daisyui
+This will overwrite the daisyui configuration. Ensure that your tailwind.config.js file contains the following:
 
 ```
 module.exports = {
